@@ -1,0 +1,70 @@
+<div class="user-form-container">
+<h2>Agregar Nuevo Usuario</h2>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+  <div>
+    <label>Nombre:</label>
+    <input type="text" formControlName="nombreUsuario" />
+    <div *ngIf="submitted && f['nombreUsuario'].errors">
+      <small *ngIf="f['nombreUsuario'].errors['required']">El nombre es requerido</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Apellidos:</label>
+    <input type="text" formControlName="apellidosUsuario" />
+    <div *ngIf="submitted && f['apellidosUsuario'].errors">
+      <small *ngIf="f['apellidosUsuario'].errors['required']">Los apellidos son requeridos</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input type="email" formControlName="emailUsuario" />
+    <div *ngIf="submitted && f['emailUsuario'].errors">
+      <small *ngIf="f['emailUsuario'].errors['required']">Email requerido</small>
+      <small *ngIf="f['emailUsuario'].errors['email']">Email inválido</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Usuario (login):</label>
+    <input type="text" formControlName="userUsuario" />
+    <div *ngIf="submitted && f['userUsuario'].errors">
+      <small *ngIf="f['userUsuario'].errors['required']">Nombre de usuario requerido</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Contraseña:</label>
+    <input type="password" formControlName="passUsuario" />
+    <div *ngIf="submitted && f['passUsuario'].errors">
+      <small *ngIf="f['passUsuario'].errors['required']">Contraseña requerida</small>
+      <small *ngIf="f['passUsuario'].errors['minlength']">Mínimo 4 caracteres</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Rol:</label>
+    <select formControlName="idRol">
+      <option value="">Seleccione un rol</option>
+      <option *ngFor="let role of roles" [value]="role.idRol">{{ role.nombreRol }}</option>
+    </select>
+    <div *ngIf="submitted && f['idRol'].errors">
+      <small *ngIf="f['idRol'].errors['required']">Debe seleccionar un rol</small>
+    </div>
+  </div>
+
+  <div>
+    <label>Estado:</label>
+    <select formControlName="estado">
+      <option value="ACTIVO">ACTIVO</option>
+      <option value="INACTIVO">INACTIVO</option>
+    </select>
+  </div>
+
+  <div>
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="onReset()">Limpiar</button>
+  </div>
+</form>
+</div>

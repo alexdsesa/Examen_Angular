@@ -1,0 +1,25 @@
+<h2>Lista de Usuarios</h2>
+<table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Email</th>
+      <th>Usuario</th>
+      <th>Estado</th>
+      <th>Rol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.idUsuario }}</td>
+      <td>{{ user.nombreUsuario }}</td>
+      <td>{{ user.apellidosUsuario }}</td>
+      <td>{{ user.emailUsuario }}</td>
+      <td>{{ user.userUsuario }}</td>
+      <td>{{ user.estado }}</td>
+      <td>{{ user.fkIdRol?.nombreRol }}</td>
+    </tr>
+  </tbody>
+</table>
